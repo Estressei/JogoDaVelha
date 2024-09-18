@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vw;
+    width: 100vw;
+    background: linear-gradient(90deg, rgb(0, 187, 255)0%, rgb(0, 68, 255)100%);
+}
+p{
+    font-size: 20px;
+}
+.tab{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-content: center; /*centralizar conteudo*/
+    align-content: center; /*centralizar conteudo verticalmente*/
+    justify-items: center; /*centralizar itens, ou seja, centralizar o conteudo dos quadrados*/
+    align-items: center; /*centralizar itens verticalmente*/
+    grid-template-columns: repeat(3, auto);
+}
+.tab.x .quad:not(.x):not(.circ):hover::after,
+.tab.x .quad:not(.x):not(.circ):hover::before,
+.tab.circ .quad:not(.x):not(.circ):hover::after,
+.tab.circ .quad:not(.x):not(.circ):hover::before{ /*deixar os x e circ fraco*/
+    background-color: rgb(215, 214, 214, 0.3) !important;
+}
+
+
+/*Quadrados*/
+.quad{
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+.quad:nth-child(1),/*numero do filho que quer modificar*/
+.quad:nth-child(2),
+.quad:nth-child(3){
+    border-top: none;
+}
+.quad:nth-child(1),
+.quad:nth-child(4),
+.quad:nth-child(7){
+    border-left: none;
+}
+.quad:nth-child(7),
+.quad:nth-child(8),
+.quad:nth-child(9){
+    border-bottom: none;
+}
+.quad:nth-child(3),
+.quad:nth-child(6),
+.quad:nth-child(9){
+    border-right: none;
+}
+
+.quad.x, .quad.circ{
+    cursor: not-allowed;
+}
+
+/*X*/
+.quad.x::before,
+.quad.x::after, 
+.tab.x .quad:not(.x):not(.circ):hover::after,
+.tab.x .quad:not(.x):not(.circ):hover::before{ /*todas os quad que nao tem x e circ, e nesses quads vazios, aplicar o hover, que vai aparecer o x mais fraco*/
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+}
+.quad.x::before,
+.tab.x .quad:not(.x):not(.circ):hover::before{ 
+    transform: rotate(45deg);
+}
+.quad.x::after,
+.tab.x .quad:not(.x):not(.circ):hover::after{
+    transform: rotate(-45deg);
+}
+
+/*Circulo*/
+.quad.circ::before,
+.quad.circ::after,
+.tab.circ .quad:not(.x):not(.circ):hover::after,
+.tab.circ .quad:not(.x):not(.circ):hover::before{
+    content: "";
+    height: calc(100px * 0.9);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.da_vez{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Mensagem quando ganha*/
+.mensagem{
+    display: none;
+    flex-direction: column;
+    position: fixed; /*pra fazer fica no centro da tela*/
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0, 0.6);
+}
+.mensagem button{
+    font-size: 25px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #00bbff;
+    color: white;
+}
+.mensagem button:hover{
+    color: #00bbff;
+    background-color: white;
+}
+.mensagem p{
+    font-size: 35px;
+    color: white;
+}
