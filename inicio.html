@@ -11,12 +11,16 @@
         <h1>Bem-vindo ao Jogo da velha</h1>
     </header>
 
-    <div>
-        <p class="user">Digite o nome do primeiro usuario</p>
-        <input class="form_campo" type="text" placeholder="Digite nome">
-        <p class="user">Digite o nome do segundo usuario</p>
-        <input class="form_campo" type="text" placeholder="Digite nome">
-    </div>
+    <form class="cont" action="jogo.html" method="get">
+        <div>
+            Nome do primeiro usuario: <input type="text" name="usuario1" placeholder="Digite nome" required>
+        </div>
+        
+        <div>
+            Nome do segundo usuario: <input type="text" name="usuario2" placeholder="Digite nome" required>
+        </div>
+        <button class="botao" type="submit"><span class="botao_texto">Jogar</span></button>
+    </form>
     
 </body>
 </html>
